@@ -1,5 +1,5 @@
 {
-  "name": "Wes-extension",
+  "name": "wes-extension",
   "version": "4.3.5",
   "description": "A Wes extension for Webflow sites managment",
   "license": "MIT",
@@ -14,9 +14,12 @@
   },
   "dependencies": {
     "@hot-loader/react-dom": "^17.0.2",
+    "axios": "^0.26.0",
+    "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-hot-loader": "^4.13.0"
+    "react-hot-loader": "^4.13.0",
+    "react-router-dom": "^6.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
