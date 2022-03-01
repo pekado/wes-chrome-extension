@@ -5,35 +5,53 @@ function Projects({ project, setProject, setStatus }) {
   const [projects, setProjects] = useState([]);
   const [isProject, setIsProject] = useState(false);
   const projectClient = new ProjectClient();
-  useEffect(() => {
+  let currentTab;
+  useEffect(async () => {
     setStatus({
       loading: true,
       error: false,
     });
     projectClient
       .getAllProjects()
-      .then((data) => {
+      .then(async (data) => {
         setProjects(data.data);
       })
-      .then(() => {
+      .then(async () => {
+        await onFindProject();
         setStatus({
           loading: false,
           error: false,
         });
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         setStatus({
           loading: false,
-          error: true,
+          // error: true,
         });
       });
-    // return () => (unmounted = true);
   }, []);
+
+  useEffect(async () => {
+    await getCurrentTab();
+    let findproject = projects.filter((project) =>
+      project.name.includes(currentTab)
+    );
+    if (findproject.length) {
+      onSetProject(findproject[0]);
+      setIsProject(true);
+    }
+  }, [projects]);
+
+  async function getCurrentTab() {
+    let queryOptions = { active: true, currentWindow: true };
+    let [tab] = await chrome.tabs.query(queryOptions);
+    currentTab = tab.url.substring(tab.url.lastIndexOf('/') + 1);
+  }
 
   const onSetProject = (project) => {
     setProject(project);
     setIsProject(true);
-    console.log(project);
   };
 
   const backToProjects = () => {
