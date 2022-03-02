@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&display=swap');
 
 body {
-  width: 300px;
+  width: 400px;
   height: 430px;
   margin: 0;
   font-family: 'Manrope', sans-serif;
@@ -37,6 +37,12 @@ a {
   justify-content: space-between;
   align-items: center;
 }
+
+.footer {
+  padding: 10px;
+  background-color: #fff;
+}
+
 
 .login {
   padding: 10px;

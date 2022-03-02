@@ -54,24 +54,12 @@ function Projects({ project, setProject, setStatus }) {
     setIsProject(true);
   };
 
-  const backToProjects = () => {
-    setIsProject(false);
-    setProject({});
-  };
   return (
     <div className="container">
       {!isProject ? (
         <>
-          <h2>Projects</h2>
-          {projects.map((project) => (
-            <h3
-              className="pointer"
-              key={project.id}
-              onClick={() => onSetProject(project)}
-            >
-              {project.alias}
-            </h3>
-          ))}
+          <h2>No Webflow project found!</h2>
+          <p>Open this extension on Webflow designer</p>
         </>
       ) : (
         <div className="source-table">
@@ -99,12 +87,6 @@ function Projects({ project, setProject, setStatus }) {
               <span>{new Date(project.updated_at).toDateString()}</span>
             </div>
           </div>
-          <a className="block" onClick={backToProjects}>
-            Change project
-          </a>
-          <a className="block" href="http://www.hellowes.com" target="_blank">
-            Create project
-          </a>
         </div>
       )}
     </div>

@@ -52,11 +52,11 @@ function Publish({ project, error, setSteps, setStatus }) {
     // const data = await res.json();
   };
   return (
-    <div>
+    <div className="footer">
       {!isUpdated ? (
         <button onClick={getAssets}>Update project</button>
       ) : (
-        <div className="login">
+        <div>
           <h3>Your site was updated!</h3>
           <a href={project.sources[0].url_homepage} target="_blank">
             <h3>{project.sources[0].url_homepage}</h3>
