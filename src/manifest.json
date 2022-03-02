@@ -12,13 +12,22 @@
     "128": "icon-128.png"
   },
   "permissions": [
-    "tabs"
+    "tabs",
+    "activeTab",
+    "<all_urls>",
+    "storage",
+    "declarativeContent",
+        "notifications",
+        "alarms",
+        "http://*/*",
+        "https://*/*"
 ] ,
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+      "matches": ["*://*.webflow.com/design/*"],
       "js": ["contentScript.bundle.js"],
-      "css": ["content.styles.css"]
+      "css": ["content.styles.css"],
+      "run_at": "document_end"
     }
   ],
   "devtools_page": "devtools.html",

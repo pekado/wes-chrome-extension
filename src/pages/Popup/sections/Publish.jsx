@@ -58,8 +58,11 @@ function Publish({ project, error, setSteps, setStatus }) {
       ) : (
         <div>
           <h3>Your site was updated!</h3>
-          <a href={project.sources[0].url_homepage} target="_blank">
-            <h3>{project.sources[0].url_homepage}</h3>
+          <a
+            href={`https://devsites.hellowes.com/sites/${project.alias}`}
+            target="_blank"
+          >
+            <h3>https://devsites.hellowes.com/sites/{project.alias}</h3>
           </a>
         </div>
       )}

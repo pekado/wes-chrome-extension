@@ -34,13 +34,13 @@ function Projects({ project, setProject, setStatus }) {
 
   useEffect(async () => {
     await getCurrentTab();
-    let findproject = projects.filter((project) =>
-      project.name.includes(currentTab)
-    );
-    if (findproject.length) {
-      onSetProject(findproject[0]);
-      setIsProject(true);
-    }
+    projects.forEach((project) => {
+      if (project.sources[0].name === currentTab) {
+        onSetProject(project);
+        setIsProject(true);
+        return;
+      }
+    });
   }, [projects]);
 
   async function getCurrentTab() {
