@@ -43,6 +43,11 @@ a {
   background-color: #fff;
 }
 
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .login {
   padding: 10px;
@@ -55,8 +60,23 @@ a {
   margin: 40px 0;
 }
 
+.logout {
+  border-radius: 4px;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.logout:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .flex-one {
   flex: 1;
+}
+
+.sign-in {
+  margin: 20px auto;
+  width: 120px;
 }
 
 .input-form {
@@ -72,9 +92,10 @@ a {
   border-top: 1px solid #ffffff;
   display: flex;
   flex-direction: row;
+  font-size: 14px;
 }
 
-.input-form .input-row:last-child {
+.last-row {
   border-bottom: 1px solid #ffffff;
 }
 
@@ -88,10 +109,6 @@ a {
   border-right: 1px solid #ffffff;
   display: flex;
   align-items: center;
-}
-
-.input-row .right-column {
-  width: 100%;
 }
 
 .right-column input {
@@ -166,9 +183,9 @@ a {
   color: #044ad2;
 }
 
-.detail-row .flex-05 {
+.flex-05 {
   flex: 1;
-  min-width: 45px;
+  width: 45px;
 }
 
 .detail-row .flex-1 {

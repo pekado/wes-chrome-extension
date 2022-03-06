@@ -34,7 +34,7 @@ function Login({ error, setSteps, setStatus }) {
           setSteps('PROJECTS');
         },
         (err) => {
-          console.log(err);
+          console.error(err);
           setStatus({
             error: true,
             loading: false,
@@ -55,7 +55,7 @@ function Login({ error, setSteps, setStatus }) {
               <input type="text" name="username" onChange={handleForm} />
             </div>
           </div>
-          <div className="input-row">
+          <div className="input-row last-row">
             <div className="input-column">
               <label htmlFor="">Password</label>
             </div>
@@ -63,9 +63,13 @@ function Login({ error, setSteps, setStatus }) {
               <input type="password" name="password" onChange={handleForm} />
             </div>
           </div>
-          <button onClick={onLogin}>Sign In</button>
+          <div className="flex">
+            <button onClick={onLogin} className="sign-in">
+              Sign In
+            </button>
+          </div>
           {error && <p className="error">Wrong credentials</p>}
-          <p>Forgot password</p>
+          {/* <p>Forgot password</p> */}
         </div>
       </div>
     </div>

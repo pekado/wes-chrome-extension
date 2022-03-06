@@ -7,27 +7,8 @@ function Publish({ project, error, setSteps, setStatus }) {
   const projectClient = new ProjectClient();
   const [isUpdated, setIsUpdated] = useState(false);
 
-  const onPublish = async () => {
-    projectClient
-      .buildProject(project.id)
-      .then((res) => {
-        setStatus({
-          loading: false,
-          error: false,
-        });
-        setIsUpdated(true);
-        console.log(res);
-      })
-      .catch((err) => {
-        setStatus({
-          loading: false,
-          error: true,
-        });
-        console.error(err);
-      });
-  };
-
-  const getAssets = async () => {
+  const onUpdate = async () => {
+    let htmlAssets = [];
     setStatus({
       loading: true,
       error: false,
@@ -36,25 +17,39 @@ function Publish({ project, error, setSteps, setStatus }) {
       .getAssets(project.id)
       .then((assets) => {
         // import html assets only
-        let htmlAssets = assets.filter((a) => {
+        htmlAssets = assets.filter((a) => {
           return a.type === 'html';
         });
-        // console.log(htmlAssets);
-        htmlAssets.forEach((asset) => {
-          assetClient
-            .updateAsset(28, asset.id, asset)
-            .then((res) => console.log(res))
-            .catch((err) => console.error(err));
-        });
       })
-      .then(() => onPublish())
-      .catch((err) => console.error(err));
+      .then(() => {
+        let assetPromise = htmlAssets.map((asset, i) => {
+          assetClient.updateAsset(project.id, asset.id, asset);
+        });
+        Promise.all(assetPromise)
+          .then(() => projectClient.buildProject(project.id))
+          .then(() => {
+            setTimeout(() => {
+              setStatus({
+                loading: false,
+                error: false,
+              });
+              setIsUpdated(true);
+            }, 7000);
+          })
+          .catch((err) => {
+            setStatus({
+              loading: false,
+              error: true,
+            });
+            console.error(err);
+          });
+      });
     // const data = await res.json();
   };
   return (
     <div className="footer">
       {!isUpdated ? (
-        <button onClick={getAssets}>Update project</button>
+        <button onClick={onUpdate}>Update project</button>
       ) : (
         <div>
           <h3>Your site was updated!</h3>

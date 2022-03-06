@@ -19,6 +19,8 @@
     "declarativeContent",
         "notifications",
         "alarms",
+        "webRequest",
+        "webRequestBlocking",
         "http://*/*",
         "https://*/*"
 ] ,

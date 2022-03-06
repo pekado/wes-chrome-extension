@@ -1,8 +1,16 @@
+// chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+//   console.log(
+//     sender.tab
+//       ? 'from a content script:' + sender.tab.url
+//       : 'from the extension'
+//   );
+//   if (request.greeting == 'hello') sendResponse({ farewell: 'goodbye' });
+// });
 
-chrome.tabs.onUpdate.addListener(function(tabId, changeInfo, tab){
-  if(changeInfo.status === 'complete'){
-    chrome.tabs.executeScript({
-      file: 'content.js'
-    })
-  }
-})
+chrome.webRequest.onCompleted.addListener(
+  function (details) {
+    console.log(details);
+  },
+  { urls: ['<all_urls>'], types: ['xmlhttprequest'] },
+  ['requestHeaders']
+);

@@ -44,7 +44,7 @@ const Popup = () => {
         <div className="flex">
           <h1>Wes</h1>
           {steps !== 'LOGIN' && (
-            <a onClick={logout} className="login">
+            <a onClick={logout} className="login logout">
               logout
             </a>
           )}
