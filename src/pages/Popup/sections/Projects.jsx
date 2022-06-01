@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ProjectClient from '../../../clients/ProjectClient';
+import info from '../../../assets/img/info.svg';
 
 function Projects({ project, setProject, setStatus }) {
   const [projects, setProjects] = useState([]);
@@ -14,6 +15,7 @@ function Projects({ project, setProject, setStatus }) {
     projectClient
       .getAllProjects()
       .then(async (data) => {
+        console.log(data.data);
         setProjects(data.data);
       })
       .then(async () => {
@@ -34,7 +36,9 @@ function Projects({ project, setProject, setStatus }) {
   useEffect(async () => {
     await getCurrentTab();
     projects.forEach((project) => {
-      if (project.sources[0]?.name === currentTab) {
+      if (
+        project.sources[0]?.name === 'accel-portal-working-f12429ac6f56a26ea7'
+      ) {
         onSetProject(project);
         setIsProject(true);
         return;
@@ -57,26 +61,20 @@ function Projects({ project, setProject, setStatus }) {
     <>
       {!isProject ? (
         <div className="container flex-center">
-          <div>
-            <h2>No Webflow project found!</h2>
+          <div className="no-projects">
+            <img src={info} alt="info" s />
+            <h2>No Webflow project found</h2>
             <p>Open this extension in the Webflow designer</p>
           </div>
         </div>
       ) : (
         <div className="container">
+          <div className="project-name">
+              <span>{project.name}</span>
+          </div>
           <div className="source-table">
-            <div className="detail-row black">
-              <div className="column flex-05">
-                <span> Project Name: </span>
-              </div>
-              <div className="column ">
-                <span>{project.name}</span>
-              </div>
-            </div>
-            <div className="detail-row black">
-              <div className="column flex-05">
-                <span> Project URL: </span>
-              </div>
+            <div className="repository-single-item-wrapper is-grey">
+              <span> Project URL: </span>
               <div className="column">
                 <a
                   href={`https://devsites.hellowes.com/sites/${project.alias}`}
@@ -88,18 +86,14 @@ function Projects({ project, setProject, setStatus }) {
                 </a>
               </div>
             </div>
-            <div className="detail-row black">
-              <div className="column flex-05">
-                <span>Created at: </span>
-              </div>
+            <div className="repository-single-item-wrapper ">
+              <span>Created at: </span>
               <div className="column">
                 <span>{new Date(project.created_at).toDateString()}</span>
               </div>
             </div>
-            <div className="detail-row black">
-              <div className="column flex-05">
-                <span>Updated at: </span>
-              </div>
+            <div className="repository-single-item-wrapper is-grey">
+              <span>Updated at: </span>
               <div className="column">
                 <span>{new Date(project.updated_at).toDateString()}</span>
               </div>

@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&display=swap');
+
 
 body {
-  width: 400px;
+  width: 380px;
   height: 430px;
   margin: 0;
-  font-family: 'Manrope', sans-serif;
+  /* font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
   position: relative;
 }
 
@@ -50,19 +49,40 @@ a {
 }
 
 .login {
-  padding: 10px;
+  padding: 0 10px;
   color: #e7f9ff;
 }
 .login-form {
-  padding: 10px;
+  padding: 0 30px;
   color: #e7f9ff;
   flex: 1;
   margin: 40px 0;
 }
 
+.login-form input[type="text"], input[type="password"]{
+  border: 1px solid #AA94DD;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  background-color: #182231;
+  padding: 8px 12px 8px 32px;
+  color: #fff;
+}
+
+.login-form input[type="text"]{
+  background-image: url('../../assets/img/user.svg');
+  background-repeat: no-repeat;
+  background-position: left 10px center;
+}
+.login-form input[type="password"]{
+  background-image: url('../../assets/img/lock.svg');
+  background-repeat: no-repeat;
+  background-position: left 10px center;
+}
+
 .logout {
   border-radius: 4px;
-  margin: 10px;
   text-decoration: none;
 }
 
@@ -76,57 +96,35 @@ a {
 
 .sign-in {
   margin: 20px auto;
-  width: 120px;
 }
 
-.input-form {
-  /* width: 300px; */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.no-projects{
+  text-align: center;
 }
 
-.input-form .input-row {
-  height: 60px;
-  /* width: 100%; */
-  border-top: 1px solid #ffffff;
-  display: flex;
-  flex-direction: row;
-  font-size: 14px;
+.no-projects h2, p{
+  font-weight: 400;
+
 }
 
-.last-row {
-  border-bottom: 1px solid #ffffff;
+.repository-single-item-wrapper{
+  padding: 0 15px;
+  
+}
+.repository-single-item-wrapper span{
+  width: 90px;
+}
+.repository-single-item-wrapper div{
+  width: 180px;
+  text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-.input-form .input-row:first-child {
-  border-top: 2px solid #ffffff;
-}
-
-.input-row .input-column {
-  width: 80px;
-  /* height: 100%; */
-  border-right: 1px solid #ffffff;
-  display: flex;
-  align-items: center;
-}
-
-.right-column input {
-  height: 60px;
-  width: 100%;
-  background: #54007e;
-  border: none;
-  color: #fff;
-  border-left: 1px solid #ddd;
-  padding: 0 10px;
-}
-
-.button-row,
-.input-row .keep-login {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.project-name{
+  font-size: 20px;
+  font-weight: 300;
+  margin: 15px 0;
 }
 
 /** table style */

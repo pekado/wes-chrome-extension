@@ -47,30 +47,22 @@ function Login({ error, setSteps, setStatus }) {
     <div className="login-form">
       <div className="input-form">
         <div className="flex-1">
-          <div className="input-row">
-            <div className="input-column">
-              <label htmlFor="">User</label>
-            </div>
-            <div className="right-column">
-              <input type="text" name="username" onChange={handleForm} />
-            </div>
+          <div className="right-column">
+            <input type="text" name="username" onChange={handleForm} />
           </div>
-          <div className="input-row last-row">
-            <div className="input-column">
-              <label htmlFor="">Password</label>
-            </div>
-            <div className="right-column">
-              <input type="password" name="password" onChange={handleForm} />
-            </div>
-          </div>
-          <div className="flex">
-            <button onClick={onLogin} className="sign-in">
-              Sign In
-            </button>
-          </div>
-          {error && <p className="error">Wrong credentials</p>}
-          {/* <p>Forgot password</p> */}
         </div>
+        <div className="input-row last-row">
+          <div className="right-column">
+            <input type="password" name="password" onChange={handleForm} />
+          </div>
+        </div>
+        <div className="flex">
+          <button onClick={onLogin} className="sign-in">
+            Sign In
+          </button>
+        </div>
+        {error && <p className="error">Wrong credentials</p>}
+        {/* <p>Forgot password</p> */}
       </div>
     </div>
   );

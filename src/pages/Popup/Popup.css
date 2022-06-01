@@ -5,22 +5,32 @@
   left: 0px;
   right: 0px;
   height: 100%;
-  background-color: #54007e;
+  background-color: #182231;
   display: flex;
   flex-direction: column;
   justify-content: center;
   color: #ffffff;
+  
 }
 .App h1 {
-  padding: 0 10px;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
 }
 
+.header{
+  padding: 7px 20px;
+}
+
+
 .container {
-  padding: 10px;
+  /* padding: 30px; */
   background-color: #ffffff;
   color: black;
   overflow-x: auto;
   flex: 1;
+  padding: 10px 25px 10px 20px;
 }
 
 label {
@@ -33,8 +43,9 @@ form {
 
 button {
   align-items: center;
-  background: #54007e;
-  border: 1px solid #fff;
+  background: #1169FE;
+  width: 100%;
+  border: none;
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
@@ -45,7 +56,6 @@ button {
   justify-content: center;
   position: relative;
   transition: 0.1s;
-  width: 100%;
 }
 
 input:focus-visible {
