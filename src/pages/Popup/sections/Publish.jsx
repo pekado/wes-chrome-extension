@@ -28,6 +28,9 @@ function Publish({ project, error, setSteps, setStatus }) {
         Promise.all(assetPromise)
           .then(() => projectClient.buildProject(project.id))
           .then(() => {
+            projectClient.getProject(project.alias).then((data) => {
+              project.updated_at = data.updated_at;
+            });
             setTimeout(() => {
               setStatus({
                 loading: false,
@@ -36,6 +39,7 @@ function Publish({ project, error, setSteps, setStatus }) {
               setIsUpdated(true);
             }, 7000);
           })
+
           .catch((err) => {
             setStatus({
               loading: false,
@@ -47,24 +51,20 @@ function Publish({ project, error, setSteps, setStatus }) {
     // const data = await res.json();
   };
   return (
-    <div className="footer">
-      {!isUpdated ? (
-        <button onClick={onUpdate}>Update project</button>
-      ) : (
-        <div>
-          <h3>Your site was updated!</h3>
-          <a
-            href={`https://devsites.hellowes.com/sites/${project.alias}`}
-            target="_blank"
-          >
-            <h3>https://devsites.hellowes.com/sites/{project.alias}</h3>
-          </a>
-        </div>
-      )}
+    <>
       {error && (
-        <p className="error">Something went wrong, go back to Projects</p>
+        <p className="error">Something went wrong, try again.</p>
       )}
-    </div>
+      <div className="footer">
+        {!isUpdated ? (
+          <button onClick={onUpdate}>Update project</button>
+        ) : (
+          <div className="project-name">
+            <span>Your site was updated!</span>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

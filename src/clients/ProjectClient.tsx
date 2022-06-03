@@ -18,11 +18,11 @@ class ProjectClient extends BaseClient {
   };
   /**
    * get project detail
-   * @param id
+   * @param alias
    * @returns
    */
-  getProject = (id: number): Promise<Project> => {
-    return this.get(`/project/${id}`);
+  getProject = (alias: string): Promise<Project> => {
+    return this.get(`/project/${alias}`);
   };
 
   /**

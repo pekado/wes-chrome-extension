@@ -7,6 +7,7 @@ function Projects({ project, setProject, setStatus }) {
   const [isProject, setIsProject] = useState(false);
   const projectClient = new ProjectClient();
   let currentTab;
+
   useEffect(async () => {
     setStatus({
       loading: true,
@@ -14,11 +15,10 @@ function Projects({ project, setProject, setStatus }) {
     });
     projectClient
       .getAllProjects()
-      .then(async (data) => {
-        console.log(data.data);
+      .then((data) => {
         setProjects(data.data);
       })
-      .then(async () => {
+      .then(() => {
         setStatus({
           loading: false,
           error: false,
@@ -36,9 +36,7 @@ function Projects({ project, setProject, setStatus }) {
   useEffect(async () => {
     await getCurrentTab();
     projects.forEach((project) => {
-      if (
-        project.sources[0]?.name === 'accel-portal-working-f12429ac6f56a26ea7'
-      ) {
+      if (project.sources[0]?.name === 'hellos-exceptional-site-1eaf82') {
         onSetProject(project);
         setIsProject(true);
         return;
@@ -62,7 +60,7 @@ function Projects({ project, setProject, setStatus }) {
       {!isProject ? (
         <div className="container flex-center">
           <div className="no-projects">
-            <img src={info} alt="info" s />
+            <img src={info} alt="info" />
             <h2>No Webflow project found</h2>
             <p>Open this extension in the Webflow designer</p>
           </div>
@@ -70,7 +68,7 @@ function Projects({ project, setProject, setStatus }) {
       ) : (
         <div className="container">
           <div className="project-name">
-              <span>{project.name}</span>
+            <span>{project.name}</span>
           </div>
           <div className="source-table">
             <div className="repository-single-item-wrapper is-grey">
@@ -87,13 +85,13 @@ function Projects({ project, setProject, setStatus }) {
               </div>
             </div>
             <div className="repository-single-item-wrapper ">
-              <span>Created at: </span>
+              <span>Created: </span>
               <div className="column">
                 <span>{new Date(project.created_at).toDateString()}</span>
               </div>
             </div>
             <div className="repository-single-item-wrapper is-grey">
-              <span>Updated at: </span>
+              <span>Updated: </span>
               <div className="column">
                 <span>{new Date(project.updated_at).toDateString()}</span>
               </div>
