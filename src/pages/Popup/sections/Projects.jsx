@@ -15,7 +15,7 @@ function Projects({ project, setProject, setStatus }) {
     });
     projectClient
       .getAllProjects()
-      .then((data) => {<
+      .then((data) => {
         setProjects(data.data);
       })
       .then(() => {
