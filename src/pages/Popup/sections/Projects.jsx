@@ -15,7 +15,7 @@ function Projects({ project, setProject, setStatus }) {
     });
     projectClient
       .getAllProjects()
-      .then((data) => {
+      .then((data) => {<
         setProjects(data.data);
       })
       .then(() => {
@@ -36,7 +36,7 @@ function Projects({ project, setProject, setStatus }) {
   useEffect(async () => {
     await getCurrentTab();
     projects.forEach((project) => {
-      if (project.sources[0]?.name === 'hellos-exceptional-site-1eaf82') {
+      if (project.sources[0]?.name === currentTab) {
         onSetProject(project);
         setIsProject(true);
         return;
